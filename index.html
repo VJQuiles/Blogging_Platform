@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Document Object Model</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src=""></script>
+</head>
+
+<body>
+
+    <div id="header-container">
+        <header>
+            <h1>Blog Post Central</h1>
+        </header>
+    </div>
+
+
+    <div class="section-container">
+        <section>
+
+            <div id="form-container">
+                <form id="new-post-form" novalidate>
+
+                    <div id="blog-title-container">
+                        <label for="blog-post-title">Post Title:</label>
+                        <input type="text" id="blog-post-title" name="title" placeholder="A Descriptive Title"
+                            minlength="10" required>
+                        <span class="error-message" id="title-error-message"></span>
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div id="blog-content-container">
+                        <textarea id="blog-post-content" name="content" rows="7" cols="49"
+                            placeholder="We want to hear your story!(Minimum 100 characters, Maximum 200 characters)"
+                            minlength="100" maxlength="200" required></textarea>
+                        <span class="error-message" id="content-error-message"></span>
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div id="post-button-container">
+                        <button type="submit" id="add-post-button">Add Post</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div class="section-container">
+        <section>
+
+            <div id="post-list-container">
+                <ul id="blog-post-list"></ul>
+            </div>
+
+        </section>
+    </div>
+
+</body>
+
+</html>
