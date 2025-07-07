@@ -1,0 +1,5 @@
+# Reflection - so far
+
+Unfortunately, I am still not done with this project, I have only organized the form validation and pushing the info into an object. I havent hit any major headache moments, aside from the very beginning, when I kept getting frustrated thinking my blog title event listener was written incorrectly, only to realize i didnt link the javascript to the page. For now i can anticipate that the edit feature will be the most difficult, especially since we have already handled deleting dynamic updates to the dom in lab 1. 
+
+Labs 1 and 2 as well as the 4th SBA have also been a resource, especially lab 2, which took a while, but really helped to cement an understanding of form validation. I wish i was doing more than just this readme, but life started lifin today. This will be done though.
