@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Document Object Model</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src=""></script>
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                     <div id="blog-title-container">
                         <label for="blog-post-title">Post Title:</label>
                         <input type="text" id="blog-post-title" name="title" placeholder="A Descriptive Title"
-                            minlength="10" required>
+                            title="Type Title Here" minlength="10" required> <br>
                         <span class="error-message" id="title-error-message"></span>
                     </div>
 
@@ -36,8 +36,8 @@
 
                     <div id="blog-content-container">
                         <textarea id="blog-post-content" name="content" rows="7" cols="49"
-                            placeholder="We want to hear your story!(Minimum 100 characters, Maximum 200 characters)"
-                            minlength="100" maxlength="200" required></textarea>
+                            placeholder="We want to hear your story!(Minimum 20 characters, Maximum 200 characters)"
+                            minlength="20" maxlength="200" required></textarea> <br>
                         <span class="error-message" id="content-error-message"></span>
                     </div>
 

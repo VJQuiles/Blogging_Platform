@@ -1,4 +1,4 @@
-const blogList = []
+const postList = []
 
 const newPostForm = document.getElementById('new-post-form')
 
@@ -37,4 +37,39 @@ postContent.addEventListener('blur', () => {
 
 newPostForm.addEventListener('submit', (e) => {
     e.preventDefault()
+
+    if (!postTitle.validity.valid) {
+        alert('Please enter a valid post title.')
+        postTitle.focus()
+        return
+    }
+
+    if (!postContent.validity.valid) {
+        alert('Please enter a valid post.')
+        postContent.focus()
+        return
+    }
+
+    let postItem = {
+        postItemId: postId,
+        postItemTitle: postTitle.value,
+        postItemContent: postContent.value
+    }
+
+    postList.push(postItem)
+    // console.log(postItem)
+    // console.log(postList)
+
+    localStorage.setItem('postFormData', JSON.stringify(postList))
+    //console.log(localStorage.getItem('postFormData'))
+
+    newPostForm.reset()
 })
+
+function renderPostList() {
+    let postListDisplayItem = document.createElement('li')
+    postListDisplayItem.dataset.postId = postId
+
+    postListDisplayItem.innerHTML =
+        `<h1>${}</h1>`
+}
