@@ -1,11 +1,11 @@
-input:required {
+/* input:required {
     border-left: 5px solid orange;
 }
 
 input:invalid {
     border-left: 5px solid red;
     background-color: #ffe0e0;
-}
+} */
 
 input:valid {
     border-left: 5px solid green;
@@ -13,6 +13,12 @@ input:valid {
 
 input:focus:invalid {
     outline: none;
+}
+
+input:placeholder-shown {
+    background-color: rgb(252, 252, 249);
+    border: 2px solid rgb(7, 7, 7);
+    border-radius: 5px;
 }
 
 .error-message {
