@@ -82,3 +82,14 @@ function renderPostList() {
     })
     //console.log(postId)
 }
+
+postDisplay.addEventListener('click', (e) => {
+    if (e.target.matches('.delete-post')) {
+        const postToDelete = e.target.closest('li')
+        const postIdToDelete = Number(postToDelete.dataset.id)
+        //console.log(typeof (postToDelete.dataset.id))
+        const indexToDelete = postList.findIndex((post) => post.postItemId === postIdToDelete)
+        postList.splice(indexToDelete, 1)
+        renderPostList()
+    }
+})
