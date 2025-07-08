@@ -60,16 +60,25 @@ newPostForm.addEventListener('submit', (e) => {
     // console.log(postItem)
     // console.log(postList)
 
-    localStorage.setItem('postFormData', JSON.stringify(postList))
+    //localStorage.setItem('postFormData', JSON.stringify(postList))
     //console.log(localStorage.getItem('postFormData'))
 
+    postId++
     newPostForm.reset()
+    renderPostList()
 })
 
 function renderPostList() {
-    let postListDisplayItem = document.createElement('li')
-    postListDisplayItem.dataset.postId = postId
-
-    postListDisplayItem.innerHTML =
-        `<h1>${}</h1>`
+    //console.log(postList)
+    postDisplay.innerHTML = ''
+    postList.forEach((post) => {
+        const postDisplayItem = document.createElement('li')
+        postDisplayItem.dataset.id = post.postItemId
+        postDisplayItem.innerHTML = `<h5 class="dynamic-post-title">${post.postItemTitle}</h5>
+        <p class='dynamic-post-content'>${post.postItemContent}</p><br>
+        <button class='delete-post'>Delete Post</button><br><br>
+        <button class='edit-post'>Edit Post</button>`
+        postDisplay.appendChild(postDisplayItem)
+    })
+    //console.log(postId)
 }
