@@ -74,10 +74,11 @@ function renderPostList() {
     postList.forEach((post) => {
         const postDisplayItem = document.createElement('li')
         postDisplayItem.dataset.id = post.postItemId
-        postDisplayItem.innerHTML = `<h5 class="dynamic-post-title">${post.postItemTitle}</h5>
-        <p class='dynamic-post-content'>${post.postItemContent}</p><br>
-        <button class='delete-post'>Delete Post</button><br><br>
-        <button class='edit-post'>Edit Post</button>`
+        postDisplayItem.innerHTML =
+            `<h5 class="dynamic-post-title">${post.postItemTitle}</h5>
+            <p class='dynamic-post-content'>${post.postItemContent}</p><br>
+            <button class='delete-post'>Delete Post</button><br><br>
+            <button class='edit-post'>Edit Post</button>`
         postDisplay.appendChild(postDisplayItem)
     })
     //console.log(postId)
@@ -91,5 +92,19 @@ postDisplay.addEventListener('click', (e) => {
         const indexToDelete = postList.findIndex((post) => post.postItemId === postIdToDelete)
         postList.splice(indexToDelete, 1)
         renderPostList()
+    }
+    else if (e.target.matches('.edit-post')) {
+        const postToEdit = e.target.closest('li')
+        const postIdToEdit = Number(postToEdit.dataset.id)
+        const indexToEdit = postList.findIndex((post) => post.postItemId === postIdToEdit)
+        console.log(postList[indexToEdit])
+        if (indexToEdit !== -1) {
+            postDisplay.innerHTML =
+                `<h5 class="dynamic-post-title-edit">${postList[indexToEdit].postItemTitle}</h5>
+                <textarea class='dynamic-post-content-edit' name='edited-post-content'>${postList[indexToEdit].postItemContent}</textarea><br>
+                <button class='delete-post'>Delete Post</button><br><br>
+                <button class='edit-post'>Edit Post</button>`
+        }
+        //renderPostList()
     }
 })
