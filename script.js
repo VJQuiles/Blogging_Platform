@@ -14,13 +14,13 @@ let postDisplay = document.getElementById('blog-post-list')
 let postId = 1
 
 window.addEventListener('load', () => {
-    console.log('something is happening on page load')
+    //console.log('something is happening on page load')
 
     let savedBlogList
 
     try {
         savedBlogList = JSON.parse(localStorage.getItem('postList'))
-        console.log(localStorage.getItem('postList'))
+        //console.log(localStorage.getItem('postList'))
     } catch (e) {
         console.error('Error parsing blog post from localStorage:', e)
         savedBlogList = null
@@ -80,7 +80,7 @@ newPostForm.addEventListener('submit', (e) => {
     // console.log(postList)
 
     localStorage.setItem('postList', JSON.stringify(postList))
-    console.log(localStorage.getItem('postList'))
+    //console.log(localStorage.getItem('postList'))
 
     postId++
     newPostForm.reset()
@@ -105,7 +105,7 @@ function renderPostList() {
 
 postDisplay.addEventListener('click', (e) => {
 
-    console.log(e.target)
+    //console.log(e.target)
 
     if (e.target.matches('.delete-post')) {
         const postToDelete = e.target.closest('li')
@@ -132,10 +132,10 @@ postDisplay.addEventListener('click', (e) => {
 
         if (editedContent) {
             postList[indexToEdit].postItemContent = editedContent.value
-            console.log('post has been edited')
+            //console.log('post has been edited')
             localStorage.setItem('postList', JSON.stringify(postList))
             renderPostList()
-            console.log('you should see the post with the saved edited content')
+            //console.log('you should see the post with the saved edited content')
             return
         }
         else {

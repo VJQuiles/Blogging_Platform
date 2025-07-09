@@ -1,11 +1,29 @@
-/* input:required {
-    border-left: 5px solid orange;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-input:invalid {
-    border-left: 5px solid red;
-    background-color: #ffe0e0;
-} */
+
+#header-container {
+    width: 400px;
+    background-color: aqua;
+    color: #222222;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+
+}
+
+#post-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#blog-title-container {
+    text-align: center;
+}
 
 input:valid {
     border-left: 5px solid green;
