@@ -13,6 +13,25 @@ const addPostBtn = document.getElementById('add-post-button')
 let postDisplay = document.getElementById('blog-post-list')
 let postId = 1
 
+window.addEventListener('load', () => {
+    console.log('something is happening on page load')
+
+    let savedBlogList
+
+    try {
+        savedBlogList = JSON.parse(localStorage.getItem('postList'))
+        console.log(localStorage.getItem('postList'))
+    } catch (e) {
+        console.error('Error parsing blog post from localStorage:', e)
+        savedBlogList = null
+    }
+
+    if (savedBlogList) {
+        postList.push(...savedBlogList)
+        renderPostList()
+    }
+})
+
 postTitle.addEventListener('blur', () => {
     if (postTitle.validity.valueMissing) {
         postTitle.setCustomValidity('Blank titles not accepted, please enter a title of at least 10 characters.')
@@ -60,8 +79,8 @@ newPostForm.addEventListener('submit', (e) => {
     // console.log(postItem)
     // console.log(postList)
 
-    //localStorage.setItem('postFormData', JSON.stringify(postList))
-    //console.log(localStorage.getItem('postFormData'))
+    localStorage.setItem('postList', JSON.stringify(postList))
+    console.log(localStorage.getItem('postList'))
 
     postId++
     newPostForm.reset()
@@ -94,6 +113,7 @@ postDisplay.addEventListener('click', (e) => {
         //console.log(typeof (postToDelete.dataset.id))
         const indexToDelete = postList.findIndex((post) => post.postItemId === postIdToDelete)
         postList.splice(indexToDelete, 1)
+        localStorage.setItem('postList', JSON.stringify(postList))
         renderPostList()
     }
     else if (e.target.matches('.edit-post')) {
@@ -113,6 +133,7 @@ postDisplay.addEventListener('click', (e) => {
         if (editedContent) {
             postList[indexToEdit].postItemContent = editedContent.value
             console.log('post has been edited')
+            localStorage.setItem('postList', JSON.stringify(postList))
             renderPostList()
             console.log('you should see the post with the saved edited content')
             return
