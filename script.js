@@ -85,6 +85,9 @@ function renderPostList() {
 }
 
 postDisplay.addEventListener('click', (e) => {
+
+    console.log(e.target)
+
     if (e.target.matches('.delete-post')) {
         const postToDelete = e.target.closest('li')
         const postIdToDelete = Number(postToDelete.dataset.id)
@@ -94,17 +97,33 @@ postDisplay.addEventListener('click', (e) => {
         renderPostList()
     }
     else if (e.target.matches('.edit-post')) {
+
         const postToEdit = e.target.closest('li')
+        if (!postToEdit) {
+            console.log('your getting a null value')
+            return
+        }
         const postIdToEdit = Number(postToEdit.dataset.id)
         const indexToEdit = postList.findIndex((post) => post.postItemId === postIdToEdit)
-        console.log(postList[indexToEdit])
-        if (indexToEdit !== -1) {
-            postDisplay.innerHTML =
-                `<h5 class="dynamic-post-title-edit">${postList[indexToEdit].postItemTitle}</h5>
-                <textarea class='dynamic-post-content-edit' name='edited-post-content'>${postList[indexToEdit].postItemContent}</textarea><br>
-                <button class='delete-post'>Delete Post</button><br><br>
-                <button class='edit-post'>Edit Post</button>`
+        //console.log(postList[indexToEdit])
+        if (indexToEdit === -1) return
+
+        const editedContent = postToEdit.querySelector('textarea')
+
+        if (editedContent) {
+            postList[indexToEdit].postItemContent = editedContent.value
+            console.log('post has been edited')
+            renderPostList()
+            console.log('you should see the post with the saved edited content')
+            return
         }
-        //renderPostList()
+        else {
+            postToEdit.innerHTML = `<h5 class="dynamic-post-title-edit">${postList[indexToEdit].postItemTitle}</h5>
+            <textarea class='dynamic-post-content-edit' name='edited-post-content'>${postList[indexToEdit].postItemContent}</textarea><br>
+            <button class='delete-post'>Delete Post</button><br><br>
+            <button class='edit-post'>Save Post</button>`
+        }
     }
 })
+
+
